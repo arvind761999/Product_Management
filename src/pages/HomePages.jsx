@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddProductForm from '../components/AddProductForm';
 import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
 import { useNavigate } from 'react-router-dom';
 
-
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -23,16 +29,21 @@ const HomePage = () => {
     }
   };
 
+  const removeProduct = (index) => {
+    const updatedProducts = [...products];
+    updatedProducts.splice(index, 1);
+    setProducts(updatedProducts);
+  };
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Product Management</h1>
         <button onClick={handleLogout} className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Logout</button>
       </div>
-      
       <AddProductForm addProduct={addProduct} />
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <ProductList products={products} searchQuery={searchQuery} />
+      <ProductList products={products} searchQuery={searchQuery} removeProduct={removeProduct} />
     </div>
   );
 };
