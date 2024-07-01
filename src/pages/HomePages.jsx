@@ -14,6 +14,10 @@ const HomePage = () => {
     if (!token) {
       navigate('/login');
     }
+    
+    // Load products from local storage
+    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+    setProducts(storedProducts);
   }, [navigate]);
 
   const handleLogout = () => {
@@ -23,7 +27,9 @@ const HomePage = () => {
 
   const addProduct = (product) => {
     if (!products.find(p => p.name === product.name)) {
-      setProducts([...products, product]);
+      const updatedProducts = [...products, product];
+      setProducts(updatedProducts);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
     } else {
       alert('Product already exists.');
     }
@@ -33,6 +39,7 @@ const HomePage = () => {
     const updatedProducts = [...products];
     updatedProducts.splice(index, 1);
     setProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
 
   return (
