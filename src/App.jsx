@@ -9,7 +9,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <LoginPage />} />
-      <Route path="/" element={isLoggedIn ? <HomePage /> : <Navigate to="/login" />} />
+      <Route path="/" element={ <HomePage /> } />
+      <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} />} />
     </Routes>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -57,7 +57,9 @@ const LoginPage = () => {
                 className="w-full px-3 py-2 border rounded"
               />
             </div>
+            
             <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Login</button>
+            
           </form>
         </div>
       </div>
