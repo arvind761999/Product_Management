@@ -13,6 +13,7 @@ const App = () => {
       <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} />} />
     </Routes>
   );
+  
 };
 
 export default App;

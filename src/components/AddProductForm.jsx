@@ -35,7 +35,7 @@ const AddProductForm = ({ addProduct }) => {
           className="w-full px-3 py-2 border rounded"
         />
       </div>
-      <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Add Product</button>
+      <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 ">Add Product</button>
     </form>
   );
 };

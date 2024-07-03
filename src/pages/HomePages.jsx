@@ -40,7 +40,9 @@ const HomePage = () => {
     updatedProducts.splice(index, 1);
     setProducts(updatedProducts);
     localStorage.setItem('products', JSON.stringify(updatedProducts));
-  };
+  };  
+
+  
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">

@@ -10,7 +10,7 @@ const ProductList = ({ products, searchQuery, removeProduct }) => {
   }
 
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-4 ">
       {filteredProducts.map((product, index) => (
         <li key={index} className="bg-white p-4 rounded shadow-md flex justify-between items-center">
           <div className="flex-grow flex items-center">
