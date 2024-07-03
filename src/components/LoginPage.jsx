@@ -9,7 +9,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    console.log({email});
     e.preventDefault();
     try {
       const response = await axios.post('https://reqres.in/api/login', { email, password });
